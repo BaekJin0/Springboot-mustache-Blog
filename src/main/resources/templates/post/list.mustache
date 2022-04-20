@@ -1,0 +1,39 @@
+<!-- ../는 상위폴더로 올라가는 것 -->
+{{> /layout/header}}
+
+<!-- 컨테이너 시작 -->
+<div class="container mt-3"> <!-- container, mt-3은 css 클래스!! -->
+
+    <!-- 게시글 아이템 시작 -->
+    {{#posts.content}}
+    <div class="card mb-3">
+        <div class="card-body">
+          <h4 class="card-title">{{title}}</h4>
+          <a href="/post/{{id}}" class="btn btn-secondary">상세보기</a> <!--나중에 동적으로 id 바꿔줘야 한다!-->
+        </div>
+    </div>
+    {{/posts.content}}
+    <!-- 게시글 아이템 끝 -->
+
+    <!-- 페이지 시작 -->
+    <ul class="pagination justify-content-center">
+        {{#posts.first}}
+        <li class="page-item disabled"><a class="page-link" href="?page={{previewPage}}">이전</a></li>
+        {{/posts.first}}
+        {{^posts.first}}
+        <li class="page-item"><a class="page-link" href="?page={{previewPage}}">이전</a></li>
+        {{/posts.first}}
+
+        {{#posts.last}}
+        <li class="page-item disabled"><a class="page-link" href="?page={{nextPage}}">다음</a></li>
+        {{/posts.last}}
+        {{^posts.last}}
+        <li class="page-item"><a class="page-link" href="?page={{nextPage}}">다음</a></li>
+        {{/posts.last}}
+    </ul>
+    <!-- 페이지 시작 -->
+
+</div>
+<!-- 컨테이너 끝 -->
+
+{{> /layout/footer}}
